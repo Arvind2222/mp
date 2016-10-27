@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	int a[20],temp,x,i,n;
+//	clrscr();
+	printf("Enter the number of elements:");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+	printf("\n enter a number:");
+	scanf("%d",&a[i]);
+	}
+	printf("Enter no to be searched:");
+	scanf("%d",&x);
+	for(i=0;i<n;i++)
+	{
+	temp=a[i];
+	asm mov ax,temp
+	asm cmp ax,x
+	asm jz nof
+	}
+	nof:
+	if(i==n)
+	printf("No not found");
+	else
+	printf("Number is found at %d",i);
+//	getch();
+	return 0;
+}

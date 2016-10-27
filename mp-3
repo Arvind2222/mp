@@ -1,0 +1,40 @@
+EXP 03: // WRITE AN ASSEMBLY LANGUAGE PROGRAM TO IMPLEMENT BASIC ARITHMETIC OPERATION ON TWO 8/16 BIT NUMBERS.
+//16-bit Addition:
+.model small
+.data
+a dw 0405h b dw 0706h
+.code
+mov ax,@data mov ds,ax mov ax,a
+mov bx,b
+add ax,bx
+int 3
+end
+ 
+
+//16-bit Subtraction:
+.model small .data
+a dw 0405h b dw 0706h
+.code
+mov ax,@data mov ds,ax mov ax,a
+mov bx,b
+sub ax,bx
+int 3
+end
+
+// 16-bit Multiplication:
+.model small .data
+a dw 0405h b dw 0706h .code
+mov ax,@data mov ds,ax mov ax,a
+mov bx,b
+mul bx 
+int 3 
+end 
+  
+// 16-bit Division:
+.model small .data
+a dw 0705h b dw 0406h .code
+mov ax,@data mov ds,ax mov ax,a
+mov bx,b
+div bx 
+int 3 
+end

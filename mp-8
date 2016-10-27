@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{int a[20],temp,x,i,o=0,e=0,odd[20],even[20],n;
+clrscr();
+printf("Enter the number of elements:");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{printf("\n enter a number:");
+scanf("%d",&a[i]);
+temp=a[i];
+asm mov ax,temp;
+asm ror al,1
+asm jnc evn
+{odd[o]=a[i];o++;
+goto ab;}
+evn:
+{even[e]=a[i];e++;}
+ab:
+}
+printf("Even and odd numbers are:\n");
+printf("Even:");
+for(i=0;i<e;i++)
+printf("%d  ",even[i]);
+printf("\n");
+printf("odd:");
+for(i=0;i<o;i++)
+printf("%d  ",odd[i]);
+
+getch();
+}

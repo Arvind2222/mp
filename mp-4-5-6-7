@@ -1,0 +1,113 @@
+ 
+EXP 4 : assembly language program to transfer data block using string
+instructions and without using string instructions.
+
+.model small
+.data
+src db 01,02,03,04,05
+dest db ?
+count db 05
+.code
+mov ax,@data
+mov ds,ax
+mov es,ax
+mov si,offset src
+mov di,offset dest
+mov cl,count
+cld
+rep movsb
+mov di,offset dest
+int 3
+end
+ 
+
+EXP 05 - WRITE AN ASSEMBLY LANGUAGE PROGRAM TO FIND THE NUMBER/ STRING
+IS PALINDROME OR NOT.
+Data Segment
+str1 db 'MADAM','$'
+strlen1 dw $-str1
+strrev db 20 dup(' ')
+str_palin db 'String is Palindrome.','$' str_not_palin db 'String is not Palindrome.','$'
+Data Ends
+Code Segment
+Assume cs:code, ds:data
+Begin:
+mov ax, data mov ds, ax mov es, ax mov cx, strlen1 add cx, -2
+lea si, str1 lea di, strrev
+add si, strlen1 add si, -2
+L1:
+mov al, [si] mov [di], al dec si
+inc di
+loop L1
+mov al, [si] mov [di], al
+inc di
+mov dl, '$'
+mov [di], dl mov cx, strlen1
+Palin_Check: lea si, str1
+lea di, strrev repe cmpsb jne Not_Palin
+Palin:
+mov ah, 09h
+lea dx, str_palin int 21h
+jmp Exit
+Not_Palin:
+mov ah, 09h
+lea dx, str_not_palin int 21h
+Exit:
+mov ax, 4c00h int 21h
+Code Ends End Begin
+ 
+
+EXP 06 : WRITE AN ASSEMBLY LANGUAGE PROGRAM TO SORT ELEMENTS IN
+          ASCENDING/ DESCENDING ORDER.
+DATA SEGMENT
+STRING1 DB 99H,12H,56H,45H,36H
+DATA ENDS
+CODE SEGMENT
+ASSUME CS:CODE,DS:DATA
+START: MOV AX,DATA
+MOV DS,AX
+MOV CH,04H
+UP2: MOV CL,04H
+LEA SI,STRING1
+UP1: MOV AL,[SI]
+MOV BL,[SI+1]
+CMP AL,BL
+JC DOWN
+MOV DL,[SI+1]
+XCHG [SI],DL
+MOV [SI+1],DL
+DOWN: INC SI
+DEC CL
+JNZ UP1
+DEC CH
+JNZ UP2
+INT 3
+CODE ENDS
+END START
+ 
+
+EXP 07 : WRITE AN ASSEMBLY LANGUAGE PROGRAM TO FIND THE FACTORIAL OF A NUMBER USING PROCEDURE.
+.MODEL SMALL
+DATA SEGMENT
+A DB 5
+DATA ENDS
+CODE SEGMENT
+ASSUME DS:DATA,CS:CODE
+START:
+      MOV AX,DATA
+      MOV DS,AX
+      MOV AH,00
+      MOV AL,A
+L1: DEC A MUL A
+      MOV CL,A
+      CMP CL,01
+      JNZ L1
+      INT 03H
+      MOV AH,4CH
+      INT 21H
+CODE ENDS
+END START
+
+
+ 
+ 
